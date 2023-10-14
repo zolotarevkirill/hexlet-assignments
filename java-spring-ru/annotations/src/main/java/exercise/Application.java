@@ -13,14 +13,20 @@ public class Application {
             if (method.isAnnotationPresent(Inspect.class)) {
 
                 try {
-                    // Выполняем метод, помеченный аннотацией LogExecutionTime
-                    method.invoke(address);
+                    // Выполняем метод, помеченный аннотацией Inspect
+                    Object result = method.invoke(address);
+                    Class<?> returnType = method.getReturnType();
+                    String returnTypeString = returnType.getSimpleName();
+
+                    System.out.println("Method " + method.getName() + " returns a value of type " + returnTypeString);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                Class<?> returnType = method.getReturnType();
-                System.out.println("Method: " + method.getName() + "returns a value of type" + returnType.getName());
+
+
+
+//                System.out.println("Method: " + method.getName() + "returns a value of type " + returnTypeString);
             }
         }
     }
