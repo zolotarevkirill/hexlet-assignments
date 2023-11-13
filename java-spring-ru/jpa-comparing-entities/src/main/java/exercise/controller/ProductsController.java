@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
-import java.util.Optional;
 
 import exercise.model.Product;
 import exercise.repository.ProductRepository;
@@ -33,6 +32,7 @@ public class ProductsController {
     }
 
     @PostMapping(path = "")
+    @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
         List<Product> existingProducts = productRepository.findAll();
 
@@ -44,8 +44,6 @@ public class ProductsController {
 
         return productRepository.save(product);
     }
-
-
 
     @GetMapping(path = "/{id}")
     public Product show(@PathVariable long id) {
