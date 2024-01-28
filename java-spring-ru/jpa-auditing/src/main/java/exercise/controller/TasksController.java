@@ -49,9 +49,9 @@ public class TasksController {
         return task;
     }
 
-    @PutMapping("/tasks/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Task> update(@PathVariable String id, @RequestBody Task data){
-        Optional<Task> task = taskRepository.findById(Long.parseLong(id));
+        Optional<Task> task = Optional.ofNullable(taskRepository.findById(Long.parseLong(id)).orElseThrow(() -> new ResourceNotFoundException("Product with id " + id + " not found")));
         if(task.isPresent()){
             Task foundTask = task.get();
             foundTask.setTitle(data.getTitle());
@@ -63,6 +63,9 @@ public class TasksController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+
 
 
 

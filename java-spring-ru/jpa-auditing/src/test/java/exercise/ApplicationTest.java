@@ -106,8 +106,7 @@ class ApplicationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(om.writeValueAsString(task));
 
-        mockMvc.perform(request)
-                .andExpect(status().isOk());
+        mockMvc.perform(request).andExpect(status().isOk());
 
         var actualTask = taskRepository.findById(testTask.getId()).get();
 
