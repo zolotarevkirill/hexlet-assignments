@@ -40,7 +40,7 @@ public class Guest {
     @Email
     private String email;
 
-    @Pattern(regexp = "^+\\d{11,13}$")
+    @Pattern(regexp = "^\\+\\d{11,13}$")
     private String phoneNumber;
 
     @Size(min = 4, max = 4)

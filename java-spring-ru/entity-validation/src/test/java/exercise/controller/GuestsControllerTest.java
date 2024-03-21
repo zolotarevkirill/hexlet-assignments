@@ -162,7 +162,7 @@ class GuestsControllerTest {
     public void testCreateWithExpiredCard() throws Exception {
         var dto = mapper.map(testGuest);
         dto.setCardValidUntil(faker.date().past(10, TimeUnit.DAYS).toLocalDateTime().toLocalDate());
-
+        System.out.println(faker.date().past(10, TimeUnit.DAYS).toLocalDateTime().toLocalDate());
         var request = post("/guests")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(om.writeValueAsString(dto));

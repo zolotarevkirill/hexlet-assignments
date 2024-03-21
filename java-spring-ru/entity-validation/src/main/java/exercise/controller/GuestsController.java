@@ -48,7 +48,7 @@ public class GuestsController {
 
     @PostMapping(path = "")
     @ResponseStatus(HttpStatus.CREATED)
-    public GuestDTO create(@RequestBody GuestCreateDTO guestData) {
+    public GuestDTO create(@Valid @RequestBody GuestCreateDTO guestData) {
         var guest = toEntity(guestData);
         guestRepository.save(guest);
         var guestDTO = toDTO(guest);
